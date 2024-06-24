@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'tasks/task_form.css'%}">
+    <meta charset="UTF-8">
+    <title>{% if form.task_id %} Editar Tarea {% else %} Nueva Tarea {% endif %}</title>
+</head>
+<body>
+    <h1>{% if form.task_id %} Editar Tarea {% else %} Nueva Tarea {% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title.label }} {{ form.title }}
+        {{ form.description.label }} {{ form.description }}
+        {{ form.completed.label }} {{ form.completed }}
+        <button type="submit">Guardar</button>
+        <button type="submit">volver</button>
+    </form>
+</body>
+</html>

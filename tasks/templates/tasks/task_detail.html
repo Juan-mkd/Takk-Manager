@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ task.title }}</title>
+    <link rel="stylesheet" href="{% static 'tasks/task_detail.css' %}">
+</head>
+<body>
+    <h1>{{ task.title }}</h1>
+    <p>{{ task.description }}</p>
+    <p>Completada: {% if task.completed %} Sí {% else %} No {% endif %}</p>
+    <p>Creada en: {{ task.created_at }}</p>
+    <a href="{% url 'task-update' task.id %}">Editar</a>
+    <a href="{% url 'task-delete' task.id %}">Eliminar</a>
+    <a href="{% url 'task-list' %}">Volver a la lista de tareas</a>
+</body>
+</html>
